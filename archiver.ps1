@@ -1,5 +1,4 @@
-# This script will help users backup specific directories directory
-# List the contents of a directory as options in a menu
+# This script will help users backup a specific directory/directories.
 
 Clear-Host
 Write-Host "Welcome to the Archive & Backup Utlity`nHere is a list of items to back up"
