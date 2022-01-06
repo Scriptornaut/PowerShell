@@ -1,7 +1,7 @@
-# This script helps the scheduling and automation of bandwith tests over a set period of time. 
+# The ultimate goal of this script is to help the scheduling and automation of bandwith tests over a set period of time. 
 # This script depends on the ookla speedtest cli tool for Windows
-# Write-Progress -Activity "Running Speed Test" I need more research on how to use this.
-# 
+# Not all of the functions are functional. I'm posting before complete so others can review the work already done. 
+# The menu isn't fully developed. I uncomment lines as necessary for testing. The toughest part of this script has been working with the scheduled tasks. 
 
 Clear-Host
 function Get-Menu {
@@ -95,6 +95,7 @@ function Set-Schedule {
     
     $newTaskAction = @{
         Execute = 'powershell.exe'
+	#The file argument below is for testing only. It is a simple hello world script that logs a string to a file
         Argument = "-File $HOME\SpeedTestFiles\hello.ps1"
     }
     
@@ -110,21 +111,7 @@ function Set-Schedule {
         Trigger = New-ScheduledTaskTrigger @newTaskTrigger
         Description = "Testing Splat Trigger Hello World"
     }
-    #$taskAction = New-ScheduledTaskAction -Execute powershell.exe -Argument "-File $HOME\SpeedTestFiles\hello.ps1"
-    #$interval = Read-Host "How many hours between each test?"
-    #$interval = [int]$interval
-
-    #$taskTrigger = New-ScheduledTaskTrigger -Daily -RepetitionDuration $duration -RepetitionInterval (New-TimeSpan -Hours $interval)
-    #$taskName = "WriteHello"
-    #$description = "Writes Hello World to a Log"
     
-
-
-    #Register-ScheduledTask `
-    #-TaskName $taskName `
-    #-Action $taskAction `
-    #-Trigger $taskTrigger `
-    #-Description $description
     Register-ScheduledTask @registerTask
 }
 Get-Menu
