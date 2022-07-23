@@ -1,3 +1,6 @@
+# This function takes a file path as an argument, and gets some forensic attributes associated with the file. I grab the MD5 and sha256 hashes along with
+# file creation time, last accessed time, and last write time. 
+
 function Get-FileForensics{
     param([string]$path_to_search, [switch]$Recurse)
     $origin = (Get-Location).Path
